@@ -71,7 +71,7 @@ NemoWindow,
 MarlinViewWindow {
 
   &.csd.background,
-  .source-list, .source-list.view, .source-list.view:prelight { background-color: transparent; }
+  .source-list, .source-list.view, .source-list.view:hover { background-color: transparent; }
 
   .sidebar, .source-list.sidebar.view {
     background-color: $dark_sidebar_bg;
@@ -246,14 +246,14 @@ GeditWindow.background.csd GeditFileBrowserView.view {
 
   &:hover { @include button(osd-hover); }
   &:active, &:checked { @include button(osd-active); }
-  &:insensitive { @include button(osd-insensitive); }
+  &:disabled { @include button(osd-insensitive); }
 }
 
 %dark_sidebar_entry {
   @include entry(osd);
 
   &:focus { @include entry(osd-focus); }
-  &:insensitive { @include entry(osd-insensitive); }
+  &:disabled { @include entry(osd-insensitive); }
 }
 
 %dark_sidebar_scrollbar {
@@ -275,9 +275,9 @@ GeditWindow.background.csd GeditFileBrowserView.view {
 
     &:hover { background-color: lighten($dark_sidebar_fg, 20%); }
 
-    &:prelight:active { background-color: $selected_bg_color; }
+    &:hover:active { background-color: $selected_bg_color; }
 
-    &:insensitive {
+    &:disabled {
       background-color: transparent;
     }
   }
