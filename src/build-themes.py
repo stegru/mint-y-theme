@@ -11,7 +11,7 @@ DEST = '../usr/share/themes'
 curdir = os.getcwd()
 
 print("Updating Gtk3 assets")
-os.chdir("gtk-3.0/3.18/")
+os.chdir("gtk-3.0/")
 os.system("./parse-sass.sh")
 os.system("./render-assets.sh")
 print("Gtk3 assets updated")
@@ -48,9 +48,9 @@ if __name__ == '__main__':
             os.system("cp gtk-2.0/gtkrc %s" % version_folder)
             # Gtk3
             version_folder = os.path.join(dest_folder, "gtk-3.0")
-            os.system("cp -R gtk-3.0/3.18/assets %s" % version_folder)
-            os.system("cp gtk-3.0/3.18/gtk.css %s" % version_folder)
-            os.system("cp gtk-3.0/3.18/thumbnail.png %s" % version_folder)
+            os.system("cp -R gtk-3.0/assets %s" % version_folder)
+            os.system("cp gtk-3.0/gtk.css %s" % version_folder)
+            os.system("cp gtk-3.0/thumbnail.png %s" % version_folder)
             # Metacity
             os.system("cp -R metacity-1 %s" % dest_folder)
             os.system("rm %s/*-dark*" % (os.path.join(dest_folder, "metacity-1")))
@@ -76,10 +76,10 @@ if __name__ == '__main__':
             os.system("cp gtk-2.0/gtkrc-darker %s" % os.path.join(version_folder, "gtkrc"))
             # Gtk3
             version_folder = os.path.join(dest_folder, "gtk-3.0")
-            os.system("cp -R gtk-3.0/3.18/assets %s" % version_folder)
-            os.system("cp gtk-3.0/3.18/gtk-darker.css %s" % os.path.join(version_folder, "gtk.css"))
-            os.system("cp gtk-3.0/3.18/gtk-dark.css %s" % version_folder)
-            os.system("cp gtk-3.0/3.18/thumbnail.png %s" % version_folder)
+            os.system("cp -R gtk-3.0/assets %s" % version_folder)
+            os.system("cp gtk-3.0/gtk-darker.css %s" % os.path.join(version_folder, "gtk.css"))
+            os.system("cp gtk-3.0/gtk-dark.css %s" % version_folder)
+            os.system("cp gtk-3.0/thumbnail.png %s" % version_folder)
             # XFCE-Notify
             os.system("cp -R xfce-notify-4.0 %s" % dest_folder)
             # XFWM
@@ -100,9 +100,9 @@ if __name__ == '__main__':
             os.system("cp gtk-2.0/gtkrc-dark %s" % os.path.join(version_folder, "gtkrc"))
             # Gtk3
             version_folder = os.path.join(dest_folder, "gtk-3.0")
-            os.system("cp -R gtk-3.0/3.18/assets %s" % version_folder)
-            os.system("cp gtk-3.0/3.18/gtk-dark.css %s" % os.path.join(version_folder, "gtk.css"))
-            os.system("cp gtk-3.0/3.18/thumbnail-dark.png %s" % os.path.join(version_folder, "thumbnail.png"))
+            os.system("cp -R gtk-3.0/assets %s" % version_folder)
+            os.system("cp gtk-3.0/gtk-dark.css %s" % os.path.join(version_folder, "gtk.css"))
+            os.system("cp gtk-3.0/thumbnail-dark.png %s" % os.path.join(version_folder, "thumbnail.png"))
             # Metacity
             os.system("cp -R metacity-1 %s" % dest_folder)
             os.system("mv %s %s" % (os.path.join(dest_folder, "metacity-1", "metacity-theme-2-dark.xml"), os.path.join(dest_folder, "metacity-1", "metacity-theme-2.xml")))
