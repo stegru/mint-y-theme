@@ -57,13 +57,14 @@ SushiFontWidget {
 //
 // GNOME Terminal
 //
-TerminalScreen {
+vte-terminal.terminal-screen {
   -TerminalScreen-background-darkness: 0.9;
   background-color: #3f3f3f;
   color: #fff;
 }
 
-TerminalScreenContainer .scrollbar:not(.slider) {
+terminal-screen-container,
+terminal-screen-container scrollbar:not(slider) {
   border-color: transparent;
   background-color: transparent;
 }
@@ -182,17 +183,6 @@ filechooser {
   &.maximized placessidebar.sidebar { background-color: opacify($dark_sidebar_bg, 1); }
 }
 
-NautilusNotebook.notebook {
-  background-color: $base_color;
-
-  tab {
-    border-width: 0;
-    border-style: solid;
-    border-color: transparent;
-    background-color: transparent;
-  }
-}
-
 NautilusQueryEditor .search-bar.toolbar {
   padding: 5px;
   box-shadow: none;
@@ -235,14 +225,8 @@ NautilusListView .view { border-bottom: 1px solid $borders_color; }
 //
 .nemo-desktop.nemo-canvas-item { @extend .nautilus-desktop.nautilus-canvas-item; }
 
-NemoPlacesTreeView {
-  -NemoPlacesTreeView-disk-full-bg-color: $dark_sidebar_fg;
-  -NemoPlacesTreeView-disk-full-fg-color: darken($selected_bg_color, 10%);
-}
-
 .nemo-window {
 
-  // EelEditableLabel.entry { transition: none; }  // Workaround for invisible text in rename entry
   .nemo-window-pane widget.entry {
     border: 1px solid;
     border-radius: 3px;
@@ -250,6 +234,11 @@ NemoPlacesTreeView {
     @include entry(focus);
 
     &:selected { &:focus, & { @extend %selected_items; }}
+  }
+
+  .places-treeview {
+    -NemoPlacesTreeView-disk-full-bg-color: $dark_sidebar_fg;
+    -NemoPlacesTreeView-disk-full-fg-color: darken($selected_bg_color, 10%);
   }
 
   .nemo-places-sidebar.frame { border-width: 0; }
@@ -277,80 +266,6 @@ NemoPlacesTreeView {
     separator { background-color: transparent; }
 
     scrollbar { @extend %dark_sidebar_scrollbar }
-  }
-
-  // .sidebar {
-  //   & .frame { border-width: 0; }
-  //   & .cell { padding: 0 2px; }
-  //   & .scrollbar.vertical .trough { background-color: transparent; }
-  //   & .scrollbar.vertical .slider {
-  //     background-color: mix($fg_color, $bg_color, 40%);
-
-  //     &:hover { background-color: mix($fg_color, $bg_color, 20%); }
-  //   }
-
-  // }
-
-  // GtkSeparator.separator.horizontal { color: $borders_color; }
-
-  // .primary-toolbar NemoPathBar.linked:not(.vertical):not(.path-bar) > .button {
-
-  //   @include button(header-hover);
-
-  //   &:hover { background-color: lighten($header_button_bg, 15%); }
-  //   &:active, &:checked { @include button(header-active); }
-  //   &:disabled { color: transparentize($header_fg, 0.4); }
-  // }
-
-  // .primary-toolbar NemoPathBar.linked:not(.vertical):not(.path-bar) > .button,
-  // .primary-toolbar NemoPathBar.linked:not(.vertical):not(.path-bar) > .button:hover,
-  // .primary-toolbar NemoPathBar.linked:not(.vertical):not(.path-bar) > .button:active,
-  // .primary-toolbar NemoPathBar.linked:not(.vertical):not(.path-bar) > .button:checked,
-  // .primary-toolbar NemoPathBar.linked:not(.vertical):not(.path-bar) > .button:disabled {
-  //   @extend %linked;
-  // }
-
-  // .primary-toolbar NemoPathBar.linked:not(.vertical):not(.path-bar) {
-
-  //   $_linked_separator_color: transparentize($header_button_border, 0.6);
-
-  //   > .button:not(:first-child):not(:only-child) {
-  //     border-left-color: $_linked_separator_color;
-  //     &:last-child { border-left-color: $_linked_separator_color; }
-  //   }
-  // }
-
-  // Pathbar
-  .primary-toolbar widget.raised.linked:not(.vertical):not(.path-bar) {
-
-    > button {
-      &:not(:last-child):not(:only-child) { margin: 0 0 1px 0; }
-
-      @include button(header-hover);
-
-      &:hover { background-color: lighten($header_button_bg, 15%); }
-      &:active, &:checked { @include button(header-active); }
-      &:disabled { color: transparentize($header_fg, 0.4); }
-
-      &, &:hover, &:active, &:checked, &:disabled { @extend %linked; }
-    }
-
-    .slider-button {
-      padding-left: 2px;
-      padding-right: 2px;
-    }
-
-    @include pathbar_linking_rules($sep_color:$header_button_border);
-  }
-
-  .nemo-inactive-pane .view {
-    background-color: darken($base_color, 5%);
-
-    &:selected {
-        background-color: $selected_bg_color;
-        color: $selected_fg_color;
-        outline-color: transparentize($selected_fg_color, 0.7);
-    }
   }
 
   // Fix padding of the statusbar buttons
@@ -953,98 +868,6 @@ MarlinViewWindow {
     color: #5c616c;
   }
 }
-
-//
-// Wingpanel
-//
-// .panel {
-//   background-color: transparent;
-//   color: white;
-//   font-weight: bold;
-//   text-shadow: 0 1px 2px transparentize(black, 0.4);
-//   icon-shadow: 0 1px 2px transparentize(black, 0.4);
-
-//   &-shadow {
-//     background-image: none;
-//     background-color: transparent;
-//   }
-//   .menu {
-//     box-shadow: none;
-
-//     .menuitem {
-//       font-weight: normal;
-//       text-shadow: none;
-//       icon-shadow: none;
-//     }
-
-//     .window-frame.menu.csd,
-//     .window-frame.popup.csd {
-//       box-shadow: 0 0 0 1px transparentize(black, 0.8),
-//                   0 10px 20px transparentize(black, 0.81),
-//                   0 6px 6px transparentize(black, 0.77);
-//     }
-//   }
-//   .menubar > .menuitem {
-//     padding: 3px 6px;
-//     &:hover { background-color: transparent; }
-//   }
-//   .window-frame.menu.csd,
-//   .window-frame.popup.csd { box-shadow: none; }
-// }
-
-// .composited-indicator {
-//   background-color: transparent;
-//   color: white;
-//   text-shadow: 0 1px 2px transparentize(black, 0.4);
-//   icon-shadow: 0 1px 2px transparentize(black, 0.4);
-
-//   > GtkWidget > GtkWidget:first-child { padding: 0 2px; }
-
-//   .menuitem:active, .menuitem:hover {
-//     border-style: none;
-//     background-image: none;
-//     box-shadow: none;
-//   }
-//   > .popup > .menu {
-//     padding-top: 8px;
-//     padding-bottom: 8px;
-//   }
-// }
-
-// .panel-app-button > GtkWidget > GtkWidget:first-child {
-//   padding: 0 2px 0 4px;
-// }
-
-// .panel .menu .spinner,
-// .menu .spinner { opacity: 1 } // Fixes sound indicator buttons
-
-//
-// Wingpanel Popover
-//
-// WingpanelWidgetsIndicatorPopover.popover {
-//   padding: 0;
-
-//   text-shadow: none;
-//   icon-shadow: none;
-
-//   .menuitem {
-//     padding: 5px;
-//     outline-color: transparent;
-//     text-shadow: none;
-//     icon-shadow: none;
-//     border: solid transparent;
-//     border-width: 1px 0;
-
-//     GtkLabel, GtkImage { padding: 0 3px; }
-
-//     &:hover, &:active {
-//       background-color: if($variant == 'light', transparentize(black, 0.96), transparentize(white, 0.95));
-//       border: solid if($variant == 'light', transparentize(black, 0.92), transparentize(white, 0.93));
-//       border-width: 1px 0;
-//     }
-//     *:disabled { color: $insensitive_fg_color; }
-//   }
-// }
 
 //
 // Pantheon Terminal
