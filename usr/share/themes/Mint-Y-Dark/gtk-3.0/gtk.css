@@ -2488,7 +2488,7 @@ tooltip {
     background-color: transparent; }
   tooltip * {
     background-color: transparent;
-    color: inherit; }
+    color: #4a4a4a; }
 
 colorswatch, colorswatch:drop(active) {
   border-style: none; }
