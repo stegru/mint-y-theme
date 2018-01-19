@@ -1,3 +1,12 @@
+mint-y-theme (1.2.4) tara; urgency=medium
+
+  [ JosephMcc ]
+  * start updating for gtk3.22
+  * gtk3: Add initial support for gtk3.22
+  * gtk3: Fix the fg color of tooltips in the dark variation
+
+ -- Clement Lefebvre <root@linuxmint.com>  Fri, 19 Jan 2018 16:34:09 +0000
+
 mint-y-theme (1.2.3) sylvia; urgency=medium
 
   [ JosephMcc ]
