@@ -246,13 +246,27 @@
 	<image filename="min-icon.svg" colorize="C_icon_bg_active" x="(width-object_width)/2" y="(height-object_height)/2" width="object_width" height="object_height"/>
 </draw_ops>
 
+<!-- Application icon for the menu -->
+<draw_ops name="menu_focused">
+<icon  
+         x="(width-mini_icon_width) / 2"
+         y="(height-mini_icon_height) / 2"
+         width="mini_icon_width-1" height="mini_icon_height-1" />
+</draw_ops>
+<draw_ops name="menu_focused_pressed">
+	<include name="menu_focused"/>
+</draw_ops>
+<draw_ops name="menu_unfocused">
+	<include name="menu_focused"/>
+</draw_ops>
+<draw_ops name="menu_unfocused_prelight">
+	<include name="menu_focused"/>
+</draw_ops>
+<draw_ops name="menu_unfocused_pressed">
+	<include name="menu_focused"/>
+</draw_ops>
 
 <!--Todo-->
-<draw_ops name="menu_focused"></draw_ops>
-<draw_ops name="menu_focused_pressed"></draw_ops>
-<draw_ops name="menu_unfocused"></draw_ops>
-<draw_ops name="menu_unfocused_prelight"></draw_ops>
-<draw_ops name="menu_unfocused_pressed"></draw_ops>
 <draw_ops name="shade_focused"></draw_ops>
 <draw_ops name="shade_focused_pressed"></draw_ops>
 <draw_ops name="shade_unfocused"></draw_ops>
